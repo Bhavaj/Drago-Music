@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drago Music</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="utility.css" />
+  </head>
+  <body>
+    <div class="container flex">
+      <div class="left border m-1 p-1">
+        <div class="home round-border mp-2 flex">
+          <img class="invert" src="logo.svg" alt="" />
+          <h1>Drago Music</h1>
+        </div>
+        <div class="library round-border mp-2 ">
+          <div class="librarynav round-border flex">
+            <div>
+              <img class="logo-size invert" src="library.svg" alt="" />
+            </div>
+            <h1>Your Library</h1>
+          </div>
+
+          <div id="songslist" class="m-1">
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="right border m-1 p-1 round-border">
+        <div class="nav flex align-center">
+          <div class="m-1">
+            <img src="previous.svg" alt="" />
+            <img src="next.svg" alt="" />
+          </div>
+
+          <div class="buttons m-1">
+            <button class="p-1">Login</button>
+            <button class="p-1">Signup</button>
+          </div>
+        </div>
+        <div class="content round-border">
+          <h1 class="m-1 p-1">Playlists</h1>
+
+          <div class="card mp-2 p-1 round-border">
+            <div class="image">
+              <img
+                src="https://spotify.freewebhostmost.com/songs/cs/cover.jpg"
+                alt=""
+              />
+            </div>
+            <h2>Copyright songs</h2>
+            <h3>cover songs for you</h3>
+          </div>
+
+          <div class="playBottom flex">
+            <div class="songinfo">song name</div>
+
+            <div class="playbar invert flex justify-center">
+              <img class="playbaricons" src="prevsong.svg" alt="" />
+              <img class="playbaricons" src="play.svg" alt="" />
+              <img class="playbaricons" src="nextsong.svg" alt="" />
+            </div>
+
+            <div class="volumecontrols">
+              <div class="songtime">1:00/4:00</div>
+              <input type="range" name="" id="" />
+            </div>
+          </div>
+
+          <div class="seekbar round-border"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

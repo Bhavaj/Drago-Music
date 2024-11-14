@@ -1,0 +1,147 @@
+*{
+    
+
+    padding: 0;
+    margin: 0;
+}
+
+
+body{
+    background-color: black;
+    color: white;
+}
+
+.left{
+    width: 25vw;
+    min-height: 96vh;
+}
+
+.library{
+    
+    background-color: #121212;
+    min-height: 83vh;
+}
+
+.librarynav{
+    display: flex;
+    gap: 15px;
+}
+
+#songslist{
+    border: 2px solid white;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+.home {
+    gap: 15px;
+    background-color: #121212;
+    
+}
+
+.home img{
+    margin: 0 0 0 10px;
+}
+
+.library img{
+    margin: 0 0 0 10px;
+}
+
+
+.right{
+    width: 75vw;
+    min-height: 96vh;
+    position: relative;
+
+    
+    
+    
+    
+}
+
+.nav{
+    background-color: #222222;
+    height: 8vh;
+    justify-content: space-between;
+    
+}
+
+.previous {
+    background-color: black;
+    color: white;
+    width: 20px;
+  }
+  
+  .next {
+    background-color: black;
+    color: white;
+  }
+
+.content{
+    background-color: #121212;
+    height: 88vh;
+    overflow-y: scroll;
+    max-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+
+.card{
+    width: 10vw;
+    height: 25vh;
+    background-color: #222222;
+}
+
+
+
+.image img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+
+
+h1{
+   font-size: 24px;
+    
+}
+
+.playBottom{
+
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+    padding: 16px;
+    width: 98%;
+    
+    
+    
+    justify-content: space-between;
+    
+
+}
+
+.playbaricons{
+    padding: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+
+.seekbar{
+
+
+    border: 2px solid white;
+    padding: 2px;
+    position: absolute;
+    bottom: 0;
+    width: 99%;
+
+}
+
+
+
