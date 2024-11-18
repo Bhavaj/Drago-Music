@@ -11,11 +11,8 @@ async function getSongs() {
 
   newDiv.innerHTML = text;
 
-
-
   let songs = [];
   let songlinks = newDiv.getElementsByTagName("a");
-
 
   for (const element of songlinks) {
     if (element.href.endsWith(".mp3")) {
@@ -49,69 +46,81 @@ async function getSongs() {
 
 async function main() {
   let songs = await getSongs();
- 
-   
- 
 
-   currentSong.addEventListener('timeupdate', () => {
-    let percent = Math.ceil((currentSong.currentTime/currentSong.duration) * (100)) + "%"
+  let seekbar = document.getElementsByClassName("seekbar")[0]
 
-       if (!currentSong.paused && !currentSong.ended) {
-           document.getElementById("seekbutton").style.left = percent;
-       }
-   });
-   
 
-  playSong();
-  
+  // to change song based on where we click on the seekbar
 
-  
-}
- function playSong() {
+  seekbar.addEventListener("click",(e)=>{
+    let currentX = e.offsetX;
+    let maxWidth = e.target.offsetWidth;
+    const seekPercentage = Math.ceil((currentX / maxWidth) * 100);
 
-   
+
+    currentSong.currentTime = Math.ceil( (seekPercentage*currentSong.duration)/100);
+
     
 
-    // playing songs from the playbar
+    console.log(currentSong.currentTime)
+  })
+
+
+  // This function runs as long as an audio is playing and it is getting time update
+  currentSong.addEventListener("timeupdate", () => {
+    let dynamicSongTime = formatTime(currentSong.currentTime);
+    let dynamicSondDuration = formatTime(currentSong.duration);
+
+      // volume control succesfully implemented
+
+  let volume = document.getElementById("volume");
+    currentSong.volume = (volume.value/100);
+    
+    let songTime = document.getElementById("songtime");
+
+    songTime.innerText = `${dynamicSongTime}/${dynamicSondDuration}`;
+
+    
+    let percent =
+      Math.ceil((currentSong.currentTime / currentSong.duration) * 100) + "%";
+
+    if (!currentSong.paused && !currentSong.ended) {
+      document.getElementById("seekbutton").style.left = percent;
+    }
+  });
+
+
+
+
+  playSong();
+}
+
+function formatTime(seconds) {
+  const minutes = Math.ceil(Math.floor(seconds / 60)); // Get the number of minutes
+  const remainingSeconds = Math.ceil(seconds % 60); // Get the remaining seconds
+  return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
+
+function playSong() {
+  // playing songs from the playbar
   let playbutton = document.getElementById("playbutton");
   console.log(playbutton.src);
 
-  
-
   playbutton.addEventListener("click", (e) => {
-    
-    
-    
-
     if (playbutton.src == "http://127.0.0.1:5500/play.svg") {
-      
-        
-      
-
       currentSong.play();
       playbutton.src = "http://127.0.0.1:5500/pause.svg";
       console.log(currentSong.played);
+    } else {
+      playbutton.src = "http://127.0.0.1:5500/play.svg";
 
-    } 
+      currentSong.pause();
+      console.log(currentSong.played);
 
-    else{
-        playbutton.src = "http://127.0.0.1:5500/play.svg";
-
-        currentSong.pause();
-        console.log(currentSong.played);
-  
-        document.querySelectorAll(".leftsongdiv").forEach((button) => {
-          button.childNodes[1].src = "http://127.0.0.1:5500/play.svg";
-        });
-
-
+      document.querySelectorAll(".leftsongdiv").forEach((button) => {
+        button.childNodes[1].src = "http://127.0.0.1:5500/play.svg";
+      });
     }
-
-
-     
-    
-
-    
   });
 
   // playing songs from the left side div
@@ -126,7 +135,7 @@ async function main() {
         playbutton.src = "http://127.0.0.1:5500/pause.svg";
         leftplayorpause.src = "http://127.0.0.1:5500/pause.svg";
         currentSong.play();
-        console.log("bhaai")
+        console.log("bhaai");
       } else if (leftplayorpause.src == "http://127.0.0.1:5500/pause.svg") {
         playbutton.src = "http://127.0.0.1:5500/play.svg";
         leftplayorpause.src = "http://127.0.0.1:5500/play.svg";
@@ -134,13 +143,6 @@ async function main() {
       }
     };
   });
-  
-
-  
-
- 
-
 }
-
 
 main();
